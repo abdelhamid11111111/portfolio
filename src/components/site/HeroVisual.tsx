@@ -69,7 +69,9 @@ const code = [
  *
  * Offsets are percentages, not fixed pixels: the window shrinks on short
  * viewports, and at ~190px tall a `top-12` / `bottom-24` pair would land on the
- * same spot and stack two chips on top of each other.
+ * same spot and stack two chips on top of each other. The size is capped at the
+ * width of the `lg:px-12` gutter they sit in, so a chip never rides up onto the
+ * snippet.
  */
 const chips = [
   { icon: SiReact, label: "React", pos: "left-0 top-[8%]", delay: 0 },
@@ -82,7 +84,7 @@ export function HeroVisual() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div aria-hidden className="relative mx-auto w-full max-w-lg lg:max-w-none lg:px-14">
+    <div aria-hidden className="relative mx-auto w-full max-w-lg lg:max-w-none lg:px-12">
       {/* Glow. Two blurred blobs, clipped by the parent's padding. */}
       <div
         className="pointer-events-none absolute -inset-10 -z-10 opacity-70"
@@ -100,7 +102,7 @@ export function HeroVisual() {
         className="relative rounded-xl border border-border bg-card/90 shadow-2xl shadow-black/10 backdrop-blur-sm dark:shadow-black/40"
       >
         {/* Window chrome */}
-        <div className="flex items-center gap-2 border-b border-border px-4 py-[clamp(0.45rem,1.2vh,0.75rem)]">
+        <div className="flex items-center gap-2 border-b border-border px-4 py-[clamp(0.45rem,1.2vh,0.75rem)] lg:px-5 lg:py-[clamp(0.6rem,1.5vh,0.95rem)]">
           <span className="size-3 rounded-full bg-[#ff5f57]" />
           <span className="size-3 rounded-full bg-[#febc2e]" />
           <span className="size-3 rounded-full bg-[#28c840]" />
@@ -111,8 +113,8 @@ export function HeroVisual() {
 
         {/* Snippet. Line numbers are a separate column so the code can wrap
             without the gutter wrapping with it. */}
-        <div className="overflow-x-auto p-[clamp(0.7rem,1.7vh,1.25rem)]">
-          <pre className="font-mono text-[clamp(10.5px,1.5vh,14px)] leading-[clamp(1.55,0.9vh,1.85)]">
+        <div className="overflow-x-auto p-[clamp(0.7rem,1.7vh,1.25rem)] lg:p-[clamp(1rem,2.4vh,1.5rem)]">
+          <pre className="font-mono text-[clamp(10.5px,1.5vh,14px)] leading-[1.6] lg:text-[clamp(12px,1.6vh,14px)] lg:leading-[1.85] xl:text-[clamp(13px,1.95vh,16px)] xl:leading-[1.9]">
             <code>
               {code.map((line, i) => (
                 <motion.div
@@ -143,7 +145,7 @@ export function HeroVisual() {
         </div>
 
         {/* Status bar — a small dose of realism that also reads as a claim. */}
-        <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-[clamp(0.35rem,1vh,0.625rem)] font-mono text-[clamp(9.5px,1.2vh,11px)] text-muted-foreground">
+        <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-[clamp(0.35rem,1vh,0.625rem)] font-mono text-[clamp(9.5px,1.2vh,11px)] text-muted-foreground lg:px-5 lg:py-[clamp(0.5rem,1.3vh,0.8rem)] lg:text-[clamp(10px,1.35vh,12.5px)]">
           <span className="flex items-center gap-1.5">
             <span className="size-1.5 rounded-full bg-emerald-500" />
             build passing
@@ -157,7 +159,7 @@ export function HeroVisual() {
           key={label}
           title={label}
           className={cn(
-            "absolute hidden size-11 items-center justify-center rounded-xl border border-border bg-card/95 shadow-lg shadow-black/5 backdrop-blur-sm lg:flex dark:shadow-black/30",
+            "absolute hidden size-[clamp(2.5rem,4.6vh,3rem)] items-center justify-center rounded-xl border border-border bg-card/95 shadow-lg shadow-black/5 backdrop-blur-sm lg:flex dark:shadow-black/30",
             pos,
           )}
           initial={reduceMotion ? false : { opacity: 0, scale: 0.85 }}
@@ -177,7 +179,7 @@ export function HeroVisual() {
             },
           }}
         >
-          <Icon className="size-5 text-primary" />
+          <Icon className="size-[clamp(1.15rem,2vh,1.5rem)] text-primary" />
         </motion.div>
       ))}
     </div>

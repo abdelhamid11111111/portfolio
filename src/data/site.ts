@@ -15,12 +15,12 @@ export const site = {
   name: "Abdelhamid Oug-Lhacen",
   /** Used in the nav wordmark and the footer. */
   shortName: "Abdelhamid",
-  email: "abdelhamidgoulahssen@gmail.com",
+  email: "abdelhamidouglhacen@gmail.com",
   /** TODO: replace with the real number (international format, digits only). */
-  whatsappNumber: "212600000000",
+  whatsappNumber: "212681900795",
   githubUrl: "https://github.com/abdelhamid11111111",
   /** TODO: replace with the real LinkedIn profile. */
-  linkedinUrl: "https://www.linkedin.com/",
+  linkedinUrl: "https://www.linkedin.com/in/abdelhamid-oug-lhacen-932784411/",
 } as const;
 
 export const emailHref = `mailto:${site.email}`;

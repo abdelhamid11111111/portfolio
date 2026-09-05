@@ -5,8 +5,8 @@ import { Reveal } from "@/components/motion/Reveal";
  * of context.
  *
  * The title arrives pre-split as `lead` + `accent` rather than as JSX, because
- * which words carry the gradient differs per language — English "Recent
- * projects" accents the noun, French "Projets récents" accents the adjective.
+ * which words carry the accent colour differs per language — English "Recent
+ * projects" accents the noun, French "Projets récents" the adjective.
  * Splitting in the dictionary keeps that decision with the translator.
  *
  * `align` exists because the stack and FAQ sections read better centred, while
@@ -44,7 +44,7 @@ export function SectionHead({
         id={titleId}
         className="font-display text-3xl leading-[1.12] text-balance sm:text-4xl md:text-[2.75rem]"
       >
-        {titleLead} <span className="text-gradient">{titleAccent}</span>
+        {titleLead} <span className="text-primary">{titleAccent}</span>
       </h2>
       {intro ? (
         <p className="text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg">

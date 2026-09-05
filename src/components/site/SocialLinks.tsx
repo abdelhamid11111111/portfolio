@@ -42,7 +42,7 @@ export function SocialLinks({
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             className={cn(
               "flex items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary",
-              size === "md" ? "size-10" : "size-9",
+              size === "md" ? "size-10 lg:size-12" : "size-9",
             )}
           >
             <Icon className="size-[18px]" aria-hidden focusable={false} />
