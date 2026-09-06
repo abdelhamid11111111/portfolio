@@ -28,7 +28,7 @@ export const en = {
   hero: {
     availability: "Available for freelance work",
     role: "Full Stack Developer",
-    bio: "I build web products end to end — from the interface a customer touches to the API and database behind it. My work is fast, accessible and typed all the way through, because a site that looks good but loads slowly has already lost the visitor. Landing pages, web apps and internal dashboards are where I spend most of my time.",
+    bio: "I build fast, accessible web products for small and medium businesses, from the interface customers touch to the database behind it. If you don't own a website, or yours is slow and clunky, you're losing visitors before they see what you offer. I help you fix that with landing pages, web apps, and dashboards that load instantly and convert better.",
     viewProjects: "View Projects",
     contactMe: "Contact Me",
   },
@@ -47,11 +47,12 @@ export const en = {
       "landing-pages": {
         title: "Landing Page Development",
         description:
-          "Conversion-focused pages built to load fast and turn visitors into enquiries — not just look good in a screenshot.",
+          "Conversion and focused pages built to load fast and turn visitors into enquiries, not just look good in a screenshot.",
         points: [
-          "Conversion-optimised layout",
-          "Core Web Vitals budget",
-          "SEO & analytics wired in",
+          "Conversion and optimized layout",
+          "Modern design",
+          "Google Analytics",
+          "Visible on Google",
         ],
       },
       "web-apps": {
@@ -59,6 +60,7 @@ export const en = {
         description:
           "Interactive, data-driven products with authentication, real-time updates and an API layer that holds up as the app grows.",
         points: [
+          "Security",
           "Auth & role-based access",
           "REST APIs and integrations",
           "Real-time features",
@@ -67,11 +69,12 @@ export const en = {
       dashboards: {
         title: "System & Management Dashboards",
         description:
-          "Admin panels and internal tools that make messy operations legible — built around the workflow your team actually runs.",
+          "Admin panels and analytics dashboards that turn raw activity into clear, actionable data, from user engagement and leaderboards to sales revenue and order tracking.",
         points: [
           "Custom admin panels",
           "Reporting & data tables",
-          "Workflow automation",
+          "Data tables & visual insights",
+          "Real-time metrics tracking"
         ],
       },
     },

@@ -27,7 +27,7 @@ export const fr: Dictionary = {
   hero: {
     availability: "Disponible pour des missions freelance",
     role: "Développeur Full Stack",
-    bio: "Je conçois des produits web de bout en bout — de l’interface que vos clients manipulent jusqu’à l’API et la base de données qui la font tourner. Mon travail est rapide, accessible et typé de part en part, parce qu’un site qui a fière allure mais qui met du temps à charger a déjà perdu le visiteur. Landing pages, applications web et tableaux de bord internes : c’est là que je passe le plus clair de mon temps.",
+    bio: "Je conçois des produits web rapides et accessibles pour les PME, de l’interface que vos clients manipulent jusqu’à la base de données qui la fait tourner. Si vous n’avez pas encore de site, ou si le vôtre est lent et laborieux, vous perdez des visiteurs avant même qu’ils découvrent ce que vous proposez. Je vous aide à corriger cela avec des landing pages, des applications web et des tableaux de bord qui se chargent instantanément et convertissent mieux.",
     viewProjects: "Voir les projets",
     contactMe: "Me contacter",
   },

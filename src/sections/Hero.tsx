@@ -43,7 +43,7 @@ export function Hero({
       <div className="grid-bg pointer-events-none absolute inset-0 -z-10" />
 
       <div className="wrap grid min-h-[calc(100svh-var(--nav-h))] items-center gap-[clamp(1.5rem,4.5vh,3.5rem)] py-[clamp(0.75rem,2.6vh,3.25rem)] lg:grid-cols-2 lg:gap-14">
-        <div className="flex min-w-0 flex-col items-start gap-[clamp(0.5rem,1.5vh,1.5rem)] lg:gap-[clamp(0.85rem,2.4vh,1.75rem)]">
+        <div className="flex min-w-0 flex-col items-start gap-[clamp(0.5rem,1.5vh,1.5rem)] lg:gap-[clamp(0.55rem,2vh,1.75rem)]">
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3.5 py-1.5 font-mono text-xs text-muted-foreground backdrop-blur-sm lg:px-4 lg:py-2 lg:text-[0.8rem]">
               <span className="relative flex size-2">
@@ -57,7 +57,7 @@ export function Hero({
           <Reveal delay={0.08}>
             <h1
               id="hero-title"
-              className="font-display pb-4 text-[clamp(2rem,min(6.6vw,7vh),4.1rem)] leading-[0.8] lg:text-[clamp(2.75rem,min(5.6vw,13vh),5rem)]"
+              className="font-display pb-[clamp(0.35rem,1.4vh,1rem)] text-[clamp(2rem,min(6.6vw,7vh),4.1rem)] leading-[0.8] lg:text-[clamp(2.25rem,min(5.6vw,9.5vh),5rem)]"
             >
               {/* Each part is its own block, so the name always breaks between
                   given name and surname. Left to natural wrapping it split as
@@ -93,7 +93,7 @@ export function Hero({
               <Button
                 asChild
                 size="lg"
-                className="group h-[clamp(2.5rem,5.2vh,2.75rem)] px-[clamp(0.9rem,2.2vw,1.25rem)] text-[clamp(0.85rem,1.6vh,0.95rem)] lg:h-[clamp(2.9rem,6.4vh,3.4rem)] lg:px-[clamp(1.25rem,1.9vw,1.9rem)] lg:text-[clamp(0.95rem,1.9vh,1.1rem)]"
+                className="group h-[clamp(2.5rem,5.2vh,2.75rem)] px-[clamp(0.9rem,2.2vw,1.25rem)] text-[clamp(0.85rem,1.6vh,0.95rem)] lg:h-[clamp(2.6rem,6.4vh,3.4rem)] lg:px-[clamp(1.25rem,1.9vw,1.9rem)] lg:text-[clamp(0.95rem,1.9vh,1.1rem)]"
               >
                 <a href="#projects">
                   {dict.viewProjects}
@@ -104,7 +104,7 @@ export function Hero({
                 asChild
                 size="lg"
                 variant="outline"
-                className="h-[clamp(2.5rem,5.2vh,2.75rem)] px-[clamp(0.9rem,2.2vw,1.25rem)] text-[clamp(0.85rem,1.6vh,0.95rem)] lg:h-[clamp(2.9rem,6.4vh,3.4rem)] lg:px-[clamp(1.25rem,1.9vw,1.9rem)] lg:text-[clamp(0.95rem,1.9vh,1.1rem)]"
+                className="h-[clamp(2.5rem,5.2vh,2.75rem)] px-[clamp(0.9rem,2.2vw,1.25rem)] text-[clamp(0.85rem,1.6vh,0.95rem)] lg:h-[clamp(2.6rem,6.4vh,3.4rem)] lg:px-[clamp(1.25rem,1.9vw,1.9rem)] lg:text-[clamp(0.95rem,1.9vh,1.1rem)]"
               >
                 <a href="#contact">{dict.contactMe}</a>
               </Button>
@@ -112,7 +112,7 @@ export function Hero({
           </Reveal>
 
           <Reveal delay={0.32}>
-            <SocialLinks social={social} className="pt-1" />
+            <SocialLinks social={social} size="fluid" />
           </Reveal>
         </div>
 
