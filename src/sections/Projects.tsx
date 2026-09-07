@@ -106,9 +106,12 @@ export function Projects({
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                     />
 
-                    {/* Overlay appears on hover and on keyboard focus within the
-                        card, so the links are reachable without a pointer. */}
-                    <div className="absolute inset-0 flex items-end justify-end gap-2 bg-gradient-to-t from-black/70 via-black/10 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+                    {/* Always on below `md`: a touch screen has no hover, so a
+                        reveal-on-hover overlay hides these links outright on a
+                        phone. From `md` up it goes back to appearing on hover,
+                        and on keyboard focus within the card so the links stay
+                        reachable without a pointer. */}
+                    <div className="absolute inset-0 flex flex-wrap content-end items-end justify-end gap-2 bg-gradient-to-t from-black/70 via-black/10 to-transparent p-3 opacity-100 transition-opacity duration-300 sm:p-4 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100">
                       
                       {/* Same pill as the demo link, one step quieter, so the
                           two read as a pair rather than compete. The treatment
@@ -118,7 +121,7 @@ export function Projects({
                       {study ? (
                         <Link
                           href={caseStudyHref(locale, study.slug)}
-                          className="flex items-center gap-1.5 rounded-md bg-white/15 px-3 py-2 text-sm font-medium text-white backdrop-blur-sm transition-transform hover:scale-105"
+                          className="flex items-center gap-1.5 rounded-md bg-white/15 px-2.5 py-2 text-xs font-medium text-white backdrop-blur-sm transition-transform hover:scale-105 sm:px-3 sm:text-sm"
                         >
                           <FileText className="size-4" aria-hidden />
                           {dict.caseStudy}
@@ -130,7 +133,7 @@ export function Projects({
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 rounded-md bg-white px-3 py-2 text-sm font-medium text-neutral-900 transition-transform hover:scale-105"
+                          className="flex items-center gap-1.5 rounded-md bg-white px-2.5 py-2 text-xs font-medium text-neutral-900 transition-transform hover:scale-105 sm:px-3 sm:text-sm"
                         >
                           {dict.liveDemo}
                           <ArrowUpRight className="size-4" aria-hidden />
@@ -146,7 +149,7 @@ export function Projects({
                             "{project}",
                             copy.title,
                           )}
-                          className="flex size-9 items-center justify-center rounded-md bg-white/15 text-white backdrop-blur-sm transition-transform hover:scale-105"
+                          className="flex size-9 shrink-0 items-center justify-center rounded-md bg-white/15 text-white backdrop-blur-sm transition-transform hover:scale-105"
                         >
                           <SiGithub
                             className="size-[18px]"

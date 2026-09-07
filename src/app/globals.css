@@ -120,8 +120,18 @@
   /* Rhythm — every section uses these, so vertical spacing never drifts. */
   --page-max-width: 1180px;
   --gutter: clamp(20px, 5vw, 40px);
-  --section-pad: clamp(80px, 10vw, 132px);
+  --section-pad: clamp(60px, 9vw, 132px);
   --nav-h: 68px;
+}
+
+/* Phones pay for vertical space twice: the viewport is short and the browser
+   chrome eats into it. A shorter bar and tighter section rhythm buy back most
+   of a screenful across the page, and both are variables every section already
+   reads, so nothing has to be adjusted section by section. */
+@media (max-width: 640px) {
+  :root {
+    --nav-h: 58px;
+  }
 }
 
 .dark {

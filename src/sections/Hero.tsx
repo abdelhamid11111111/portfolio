@@ -77,38 +77,32 @@ export function Hero({
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="font-mono text-[clamp(0.7rem,1.5vh,1rem)] tracking-[0.14em] text-muted-foreground uppercase lg:text-[clamp(0.85rem,1.7vh,1.15rem)]">
+            <p className="font-mono text-[clamp(0.75rem,1.5vh,1rem)] tracking-[0.12em] text-muted-foreground uppercase lg:tracking-[0.14em] lg:text-[clamp(0.85rem,1.7vh,1.15rem)]">
               {dict.role}
             </p>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <p className="max-w-xl text-[clamp(0.85rem,1.7vh,1.125rem)] leading-[1.55] text-muted-foreground text-pretty lg:max-w-2xl lg:text-[clamp(1rem,2.15vh,1.3rem)] lg:leading-[1.6]">
+            <p className="max-w-xl text-[clamp(0.95rem,1.7vh,1.125rem)] leading-[1.6] text-muted-foreground text-pretty lg:max-w-2xl lg:text-[clamp(1rem,2.15vh,1.3rem)] lg:leading-[1.6]">
               {dict.bio}
             </p>
           </Reveal>
 
+          {/* One button, not two. A primary and an outline side by side split
+              the visitor's attention between "look around" and "get in touch";
+              the section links in the header already cover browsing, so the
+              hero asks for the one thing that matters. */}
           <Reveal delay={0.26} className="w-full">
-            <div className="flex flex-row flex-wrap items-center gap-3">
-              <Button
-                asChild
-                size="lg"
-                className="group h-[clamp(2.5rem,5.2vh,2.75rem)] px-[clamp(0.9rem,2.2vw,1.25rem)] text-[clamp(0.85rem,1.6vh,0.95rem)] lg:h-[clamp(2.6rem,6.4vh,3.4rem)] lg:px-[clamp(1.25rem,1.9vw,1.9rem)] lg:text-[clamp(0.95rem,1.9vh,1.1rem)]"
-              >
-                <a href="#projects">
-                  {dict.viewProjects}
-                  <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="h-[clamp(2.5rem,5.2vh,2.75rem)] px-[clamp(0.9rem,2.2vw,1.25rem)] text-[clamp(0.85rem,1.6vh,0.95rem)] lg:h-[clamp(2.6rem,6.4vh,3.4rem)] lg:px-[clamp(1.25rem,1.9vw,1.9rem)] lg:text-[clamp(0.95rem,1.9vh,1.1rem)]"
-              >
-                <a href="#contact">{dict.contactMe}</a>
-              </Button>
-            </div>
+            <Button
+              asChild
+              size="lg"
+              className="group h-12 w-full text-base sm:h-[clamp(2.75rem,5.6vh,3rem)] sm:w-auto sm:px-[clamp(1.25rem,2.8vw,1.75rem)] sm:text-[clamp(0.9rem,1.7vh,1rem)] lg:h-[clamp(2.9rem,6.8vh,3.6rem)] lg:px-[clamp(1.75rem,2.4vw,2.4rem)] lg:text-[clamp(1rem,2vh,1.15rem)]"
+            >
+              <a href="#contact">
+                {dict.cta}
+                <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+            </Button>
           </Reveal>
 
           <Reveal delay={0.32}>

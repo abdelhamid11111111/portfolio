@@ -21,10 +21,10 @@ export function WhatsAppButton({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group fixed right-5 z-50 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 transition-transform duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
+      className="group fixed right-4 z-50 flex size-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 transition-transform duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:right-5 sm:size-14"
       style={{ bottom: "calc(1.25rem + env(safe-area-inset-bottom, 0px))" }}
     >
-      <SiWhatsapp className="size-7" aria-hidden focusable={false} />
+      <SiWhatsapp className="size-6 sm:size-7" aria-hidden focusable={false} />
       <span className="sr-only">{label}</span>
       {/* Slow pulse to draw the eye once, without animating forever in a way
           that competes with the content. Suppressed under reduced motion by the

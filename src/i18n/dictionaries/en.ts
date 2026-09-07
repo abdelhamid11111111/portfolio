@@ -28,9 +28,8 @@ export const en = {
   hero: {
     availability: "Available for freelance work",
     role: "Full Stack Developer",
-    bio: "I build fast, accessible web products for small and medium businesses, If you don't own a website, or yours is slow and clunky, you're losing visitors before they see what you offer. I help you fix that with landing pages, web apps, and dashboards that load instantly and convert better.",
-    viewProjects: "View Projects",
-    contactMe: "Contact Me",
+    bio: "Your customers are already searching for what you offer. Make sure they find you instead of your competitors. I build fast, modern landing pages, web apps, and dashboards that help your business get noticed, build trust, and turn more visitors into paying customers.",
+    cta: "Start Your Project",
   },
   social: {
     github: "GitHub profile",
@@ -430,7 +429,7 @@ export const en = {
       "why-website": {
         question: "Why should I have a website at all?",
         answer:
-          "It is the one place online that belongs to you. People look you up before they call, and a clear site answers their questions and brings you customers while you sleep.",
+          "Your customers are already searching online. If they do not find you, they find your competitor instead, and you never even hear about the sale you lost. A site keeps them with you and sells for you, day and night.",
       },
       google: {
         question: "Will people find me on Google?",

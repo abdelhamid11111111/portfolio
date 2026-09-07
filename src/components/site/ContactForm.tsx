@@ -208,7 +208,7 @@ export function ContactForm({ dict }: { dict: Dictionary["contact"]["form"] }) {
         type="submit"
         size="lg"
         disabled={pending}
-        className="group h-11 self-start px-5 text-[0.95rem]"
+        className="group h-12 w-full text-base sm:h-11 sm:w-auto sm:self-start sm:px-5 sm:text-[0.95rem]"
       >
         {pending ? (
           <>

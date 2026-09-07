@@ -27,9 +27,8 @@ export const fr: Dictionary = {
   hero: {
     availability: "Disponible pour des missions freelance",
     role: "Développeur Full Stack",
-    bio: "Je conçois des produits web rapides et accessibles pour les PME, Si vous n’avez pas encore de site, ou si le vôtre est lent et laborieux, vous perdez des visiteurs avant même qu’ils découvrent ce que vous proposez. Je vous aide à corriger cela avec des landing pages, des applications web et des tableaux de bord qui se chargent instantanément et convertissent mieux.",
-    viewProjects: "Voir les projets",
-    contactMe: "Me contacter",
+    bio: "Vos clients cherchent déjà ce que vous proposez. Faites en sorte qu’ils vous trouvent, vous, et pas vos concurrents. Je crée des landing pages, des applications web et des tableaux de bord rapides et modernes qui font remarquer votre activité, inspirent confiance et transforment plus de visiteurs en clients.",
+    cta: "Lancez votre projet",
   },
   social: {
     github: "Profil GitHub",
@@ -421,7 +420,7 @@ export const fr: Dictionary = {
       "why-website": {
         question: "Pourquoi avoir un site web ?",
         answer:
-          "C’est le seul endroit en ligne qui vous appartient. Les gens vous cherchent avant de vous appeler : un site clair répond à leurs questions et vous amène des clients même la nuit.",
+          "Vos clients cherchent déjà en ligne. S’ils ne vous trouvent pas, ils trouvent votre concurrent, et vous n’entendrez même jamais parler de la vente que vous avez perdue. Un site les garde chez vous et vend pour vous, jour et nuit.",
       },
       google: {
         question: "Est-ce qu’on me trouvera sur Google ?",

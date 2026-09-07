@@ -123,18 +123,20 @@ export function CaseStudy({
           {/* The ratio is inline rather than a Tailwind class: it comes from
               the data, and a class assembled at runtime is one Tailwind never
               sees to generate. 19/8 is the fallback, matching the cards. */}
-          <div
-            className="relative overflow-hidden rounded-xl border border-border bg-muted shadow-xl shadow-primary/5"
-            style={{ aspectRatio: study.coverRatio ?? 19 / 8 }}
-          >
-            <Image
-              src={study.cover}
-              alt={copy.coverAlt}
-              fill
-              sizes="(min-width: 1180px) 1100px, 100vw"
-              priority
-              className="object-cover"
-            />
+          <div className="overflow-x-auto overscroll-x-contain rounded-xl border border-border bg-muted shadow-xl shadow-primary/5">
+            <div
+              className="relative min-w-[34rem] sm:min-w-0"
+              style={{ aspectRatio: study.coverRatio ?? 19 / 8 }}
+            >
+              <Image
+                src={study.cover}
+                alt={copy.coverAlt}
+                fill
+                sizes="(max-width: 639px) 544px, (min-width: 1180px) 1100px, 100vw"
+                priority
+                className="object-cover"
+              />
+            </div>
           </div>
         </Reveal>
       </div>
@@ -218,7 +220,7 @@ export function CaseStudy({
       {/* The walkthrough: one screenshot per screen, alternating sides, with the
           `wide` blocks — the dashboards — given a full-width row of their own. */}
       <section className="section-y" aria-labelledby="walkthrough-title">
-        <div className="wrap flex flex-col gap-14">
+        <div className="wrap flex flex-col gap-10 sm:gap-14">
           <Reveal className="flex max-w-2xl flex-col gap-4">
             <h2
               id="walkthrough-title"
@@ -374,11 +376,32 @@ function Shot({
   sizes: string;
 }) {
   return (
-    <div
-      className="relative overflow-hidden rounded-xl border border-border bg-muted"
-      style={{ aspectRatio: ratio }}
-    >
-      <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
+    /*
+     * Below `sm` the shot keeps a legible width and the visitor scrolls it
+     * sideways. These are ~1900px-wide dashboards: squeezed into a 335px phone
+     * column they render about 140px tall, which turns a table of real data
+     * into grey noise and makes the walkthrough pointless on the device most
+     * people will read it on. 34rem is under the 640px `sm` breakpoint, so from
+     * `sm` up `min-w-0` releases it and the box behaves exactly as before —
+     * this costs the desktop layout nothing.
+     */
+    <div className="overflow-x-auto overscroll-x-contain rounded-xl border border-border bg-muted">
+      <div
+        className="relative min-w-[34rem] sm:min-w-0"
+        style={{ aspectRatio: ratio }}
+      >
+        {/* The `min-w` above means a phone renders this at 544px, not at the
+            viewport width the caller's `sizes` describes. Without the leading
+            clause the browser would pick a ~375px source and blur it across a
+            544px box, undoing the point of the scroll. */}
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={`(max-width: 639px) 544px, ${sizes}`}
+          className="object-cover"
+        />
+      </div>
     </div>
   );
 }
