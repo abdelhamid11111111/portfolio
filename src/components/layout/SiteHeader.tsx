@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LanguageToggle } from "@/components/site/LanguageToggle";
+import { useSectionHref } from "@/components/site/SectionLink";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { navLinks, site } from "@/data/site";
 import type { Dictionary } from "@/i18n/dictionaries/en";
@@ -30,6 +31,7 @@ export function SiteHeader({
   locale: Locale;
   nav: Dictionary["nav"];
 }) {
+  const sectionHref = useSectionHref(locale);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState<string>("");
@@ -77,7 +79,7 @@ export function SiteHeader({
     >
       <div className="wrap flex h-[var(--nav-h)] items-center justify-between gap-3">
         <a
-          href="#top"
+          href={sectionHref("#top")}
           className="font-display text-lg tracking-tight transition-colors hover:text-primary"
         >
           {site.shortName}
@@ -91,7 +93,7 @@ export function SiteHeader({
               return (
                 <li key={link.href}>
                   <a
-                    href={link.href}
+                    href={sectionHref(link.href)}
                     aria-current={isCurrent ? "true" : undefined}
                     className={cn(
                       "relative rounded-md px-3 py-2 text-sm transition-colors hover:text-foreground",
@@ -140,7 +142,7 @@ export function SiteHeader({
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
-                  href={link.href}
+                  href={sectionHref(link.href)}
                   onClick={closeMenu}
                   aria-current={activeId === link.href ? "true" : undefined}
                   className="block rounded-md px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground aria-[current]:text-foreground"

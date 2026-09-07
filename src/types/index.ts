@@ -74,7 +74,7 @@ export type SkillCategory = {
 /** Structure only — title, description and alt text come from the dictionary. */
 export type Project = {
   id: ProjectId;
-  /** Path under `public/`. Swap for a real screenshot at the same ratio (16:10). */
+  /** Path under `public/`. Swap for a real screenshot at the same ratio (19:8). */
   image: string;
   /** Short tech labels rendered as badges. Product names, so not translated. */
   tags: readonly string[];
@@ -88,4 +88,56 @@ export type NavLink = {
   href: string;
   /** Key into `dictionary.nav` for the visible label. */
   key: NavKey;
+};
+
+/* ---------------------------------------------------------------- case study */
+
+/**
+ * The projects that have a case study page. Derived from the dictionary the
+ * same way `ProjectId` is, and intersected with it, so a case study can only be
+ * written for a project that actually exists in `src/data/projects.ts`.
+ */
+export type CaseStudyId = keyof Dictionary["caseStudies"]["items"] & ProjectId;
+
+/** One screenshot and the prose that explains it. */
+export type CaseStudyBlock = {
+  /**
+   * Key into `caseStudies.items.<project>.blocks` in the dictionaries. Add a
+   * block here and the same key has to exist in `en.ts` and `fr.ts` — a block
+   * whose key is missing from the dictionary is skipped rather than rendered
+   * empty.
+   */
+  id: string;
+  /** Path under `public/`. */
+  image: string;
+  /**
+   * The screenshot's width ÷ height, so the box matches the file instead of
+   * cropping it. Write it as the division (`2880 / 1792`). Defaults to 19/8,
+   * the shape of a wide browser capture.
+   */
+  ratio?: number;
+  /** Spans the whole row instead of half of it — for wide dashboard captures. */
+  wide?: boolean;
+};
+
+/** Structure only — every string on the page comes from the dictionary. */
+export type CaseStudy = {
+  id: CaseStudyId;
+  /** URL segment: `/<locale>/projects/<slug>`. Lowercase and hyphenated. */
+  slug: string;
+  /** Wide header screenshot. Any ratio — say which one in `coverRatio`. */
+  cover: string;
+  /**
+   * The cover's width ÷ height, so the box matches the file instead of
+   * cropping it. Write it as the division (`2880 / 1792`) and it stays
+   * readable next to the screenshot's real dimensions. Defaults to 19/8.
+   */
+  coverRatio?: number;
+  /** Omit either link and the corresponding button is not rendered. */
+  liveUrl?: string;
+  repoUrl?: string;
+  /** Rendered as labelled brand marks; `icon` must be a key of `TechIcon`. */
+  stack: readonly Skill[];
+  /** The walkthrough, in the order the screens should be read. */
+  blocks: readonly CaseStudyBlock[];
 };

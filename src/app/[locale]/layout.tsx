@@ -127,7 +127,12 @@ export default async function RootLayout({
             <main id="main" className="flex-1">
               {children}
             </main>
-            <SiteFooter nav={dict.nav} footer={dict.footer} social={dict.social} />
+            <SiteFooter
+              locale={locale as Locale}
+              nav={dict.nav}
+              footer={dict.footer}
+              social={dict.social}
+            />
 
             {/* A landmark, so the floating action is not orphaned content
                 sitting outside every region of the page. */}
