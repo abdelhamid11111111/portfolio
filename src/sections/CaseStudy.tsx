@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, Maximize2 } from "lucide-react";
 import Image from "next/image";
 import { SiGithub } from "react-icons/si";
 import { Reveal } from "@/components/motion/Reveal";
@@ -123,21 +123,23 @@ export function CaseStudy({
           {/* The ratio is inline rather than a Tailwind class: it comes from
               the data, and a class assembled at runtime is one Tailwind never
               sees to generate. 19/8 is the fallback, matching the cards. */}
-          <div className="overflow-x-auto overscroll-x-contain rounded-xl border border-border bg-muted shadow-xl shadow-primary/5">
-            <div
-              className="relative min-w-[34rem] sm:min-w-0"
-              style={{ aspectRatio: study.coverRatio ?? 19 / 8 }}
-            >
-              <Image
-                src={study.cover}
-                alt={copy.coverAlt}
-                fill
-                sizes="(max-width: 639px) 544px, (min-width: 1180px) 1100px, 100vw"
-                priority
-                className="object-cover"
-              />
-            </div>
-          </div>
+          <a
+            href={study.cover}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/shot relative block overflow-hidden rounded-xl border border-border bg-muted shadow-xl shadow-primary/5"
+            style={{ aspectRatio: study.coverRatio ?? 19 / 8 }}
+          >
+            <Image
+              src={study.cover}
+              alt={copy.coverAlt}
+              fill
+              sizes="(min-width: 1180px) 1100px, 100vw"
+              priority
+              className="object-cover"
+            />
+            <ZoomHint />
+          </a>
         </Reveal>
       </div>
 
@@ -377,32 +379,42 @@ function Shot({
 }) {
   return (
     /*
-     * Below `sm` the shot keeps a legible width and the visitor scrolls it
-     * sideways. These are ~1900px-wide dashboards: squeezed into a 335px phone
-     * column they render about 140px tall, which turns a table of real data
-     * into grey noise and makes the walkthrough pointless on the device most
-     * people will read it on. 34rem is under the 640px `sm` breakpoint, so from
-     * `sm` up `min-w-0` releases it and the box behaves exactly as before —
-     * this costs the desktop layout nothing.
+     * The whole screenshot, always, at whatever width the column gives it —
+     * nothing cropped and nothing to scroll sideways.
+     *
+     * These are ~1900px-wide dashboards, so on a phone the fitted image is too
+     * small to read the data in it, and no amount of layout fixes that: the
+     * pixels are not there. Rather than pretend otherwise, the box opens the
+     * full-size file in a new tab, where the phone's own viewer gives
+     * pinch-to-zoom for free. No lightbox, no JavaScript, and it doubles as a
+     * "see it properly" affordance on desktop.
      */
-    <div className="overflow-x-auto overscroll-x-contain rounded-xl border border-border bg-muted">
-      <div
-        className="relative min-w-[34rem] sm:min-w-0"
-        style={{ aspectRatio: ratio }}
-      >
-        {/* The `min-w` above means a phone renders this at 544px, not at the
-            viewport width the caller's `sizes` describes. Without the leading
-            clause the browser would pick a ~375px source and blur it across a
-            544px box, undoing the point of the scroll. */}
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes={`(max-width: 639px) 544px, ${sizes}`}
-          className="object-cover"
-        />
-      </div>
-    </div>
+    <a
+      href={src}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group/shot relative block overflow-hidden rounded-xl border border-border bg-muted"
+      style={{ aspectRatio: ratio }}
+    >
+      <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
+      <ZoomHint />
+    </a>
+  );
+}
+
+/**
+ * Small badge marking a screenshot as openable. Always visible on touch, where
+ * there is no hover to discover it with; on a pointer device it fades in with
+ * the cursor so it stays out of the way of the design.
+ */
+function ZoomHint() {
+  return (
+    <span
+      aria-hidden
+      className="pointer-events-none absolute top-2.5 right-2.5 flex size-8 items-center justify-center rounded-lg bg-black/55 text-white opacity-100 backdrop-blur-sm transition-opacity duration-300 md:opacity-0 md:group-hover/shot:opacity-100"
+    >
+      <Maximize2 className="size-4" />
+    </span>
   );
 }
 
