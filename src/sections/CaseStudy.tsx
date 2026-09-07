@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, Maximize2 } from "lucide-react";
 import Image from "next/image";
 import { SiGithub } from "react-icons/si";
 import { Reveal } from "@/components/motion/Reveal";
@@ -127,7 +127,7 @@ export function CaseStudy({
             href={study.cover}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative block overflow-hidden rounded-xl border border-border bg-muted shadow-xl shadow-primary/5"
+            className="group/shot relative block overflow-hidden rounded-xl border border-border bg-muted shadow-xl shadow-primary/5"
             style={{ aspectRatio: study.coverRatio ?? 19 / 8 }}
           >
             <Image
@@ -138,6 +138,7 @@ export function CaseStudy({
               priority
               className="object-cover"
             />
+            <ZoomHint />
           </a>
         </Reveal>
       </div>
@@ -392,11 +393,25 @@ function Shot({
       href={src}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative block overflow-hidden rounded-xl border border-border bg-muted"
+      className="group/shot relative block overflow-hidden rounded-xl border border-border bg-muted"
       style={{ aspectRatio: ratio }}
     >
       <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
+      <ZoomHint />
     </a>
+  );
+}
+
+/** Marks a screenshot as openable at full size. Always on for touch, fades in
+ *  with the cursor on a pointer device. */
+function ZoomHint() {
+  return (
+    <span
+      aria-hidden
+      className="pointer-events-none absolute top-2.5 right-2.5 flex size-8 items-center justify-center rounded-lg bg-black/55 text-white backdrop-blur-sm transition-opacity duration-300 md:opacity-0 md:group-hover/shot:opacity-100"
+    >
+      <Maximize2 className="size-4" />
+    </span>
   );
 }
 
