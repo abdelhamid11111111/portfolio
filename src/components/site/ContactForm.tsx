@@ -1,5 +1,6 @@
 "use client";
 
+import emailjs from "@emailjs/browser";
 import { Loader2, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
@@ -40,30 +41,54 @@ function validate(
   return errors;
 }
 
+/*
+ * EmailJS credentials. All three are public by design — the send happens in the
+ * browser, so they end up in the bundle no matter where they are stored. The
+ * protection that matters is on the EmailJS side: Account → Security, where the
+ * allowed origins and the rate limit live.
+ */
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
 /**
- * Contact form with client-side validation and a mocked submit.
+ * Sends the form through EmailJS.
  *
- * ── TODO: wire up a real backend ────────────────────────────────────────────
- * `submitMessage` below is a stub. To make it real, replace its body with a
- * POST to your own endpoint:
+ * The keys below are the template variables, so they have to match the
+ * `{{placeholders}}` in the EmailJS template exactly:
  *
- *   await fetch("/api/contact", {
- *     method: "POST",
- *     headers: { "Content-Type": "application/json" },
- *     body: JSON.stringify(values),
- *   });
+ *   {{name}}     who wrote in            → the form's Name field
+ *   {{email}}    their address           → the form's Email field, also Reply To
+ *   {{message}}  what they wrote         → the form's Message field
+ *   {{title}}    subject line            → filled in here, not by the visitor
+ *   {{time}}     when it was sent        → the visitor's local time
  *
- * then add `src/app/api/contact/route.ts` as a Next.js route handler that sends
- * the mail (Resend, Nodemailer or a form service such as Formspree). Keep the
- * API key in `.env.local` — the route handler runs on the server, so it never
- * reaches the browser. Validate there as well: everything in this file is a
- * convenience for the visitor, not a security boundary.
- * ───────────────────────────────────────────────────────────────────────────
+ * Rename a variable in the dashboard and it has to be renamed here too, or that
+ * line arrives blank.
+ *
+ * Throwing on missing config is deliberate: a silent success toast on a form
+ * that quietly sent nothing is the worst possible failure for a contact page.
  */
 async function submitMessage(values: Record<Field, string>): Promise<void> {
-  // Stand-in for the network round trip so the pending state is visible.
-  await new Promise((resolve) => setTimeout(resolve, 900));
-  console.info("[contact] mock submit — not yet wired to a backend:", values);
+  if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+    throw new Error(
+      "EmailJS is not configured — set NEXT_PUBLIC_EMAILJS_SERVICE_ID, " +
+        "NEXT_PUBLIC_EMAILJS_TEMPLATE_ID and NEXT_PUBLIC_EMAILJS_PUBLIC_KEY.",
+    );
+  }
+
+  await emailjs.send(
+    SERVICE_ID,
+    TEMPLATE_ID,
+    {
+      name: values.name.trim(),
+      email: values.email.trim(),
+      message: values.message.trim(),
+      title: `New message from ${values.name.trim()}`,
+      time: new Date().toLocaleString(),
+    },
+    { publicKey: PUBLIC_KEY },
+  );
 }
 
 const EMPTY = { name: "", email: "", message: "" };
