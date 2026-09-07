@@ -76,7 +76,7 @@ export const caseStudies: readonly CaseStudy[] = [
       {
         id: "my-challenges",
         image: "/projects/mychallenges.png",
-        ratio: 1880 / 817,
+        ratio: 2400 / 1792,
         wide: true,
       },
       { id: "admin-dashboard", image: "/projects/dash1.png", wide: true },

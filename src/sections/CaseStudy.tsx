@@ -136,7 +136,6 @@ export function CaseStudy({
               fill
               sizes="(min-width: 1180px) 1100px, 100vw"
               priority
-              quality={90}
               className="object-cover"
             />
           </a>
@@ -396,14 +395,7 @@ function Shot({
       className="relative block overflow-hidden rounded-xl border border-border bg-muted"
       style={{ aspectRatio: ratio }}
     >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes={sizes}
-        quality={90}
-        className="object-cover"
-      />
+      <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
     </a>
   );
 }
