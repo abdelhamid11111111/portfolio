@@ -147,8 +147,14 @@ export function CaseStudy({
       <section className="section-y" aria-labelledby="overview-title">
         <div className="wrap flex flex-col gap-10">
           <Reveal className="max-w-3xl">
+            {/* Visually hidden: the section opens with the summary paragraph,
+                but `aria-labelledby` still needs something to point at. It gets
+                its own string rather than borrowing `challengeTitle`, which is
+                already the first <h3> in the grid below — two adjacent headings
+                reading "The challenge" told a screen-reader user nothing about
+                where they were. */}
             <h2 id="overview-title" className="sr-only">
-              {dict.challengeTitle}
+              {dict.overviewTitle}
             </h2>
             <p className="text-lg leading-relaxed text-pretty sm:text-xl">
               {copy.summary}

@@ -23,6 +23,23 @@ export const site = {
   linkedinUrl: "https://www.linkedin.com/in/abdelhamid-oug-lhacen-932784411/",
 } as const;
 
+/**
+ * The deployed origin, used everywhere an absolute URL is required: canonical
+ * and hreflang tags, OpenGraph metadata, the sitemap and robots.txt.
+ *
+ * Set `NEXT_PUBLIC_SITE_URL` in the deployment environment. The localhost
+ * fallback exists so `next build` works locally — a production build without
+ * the variable set emits canonicals and a sitemap pointing at localhost, which
+ * Google discards, so this is the one env var the deploy must not forget.
+ *
+ * The trailing slash is stripped because every caller appends its own path:
+ * a variable set as "https://example.com/" would otherwise produce
+ * "https://example.com//sitemap.xml".
+ */
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+).replace(/\/+$/, "");
+
 export const emailHref = `mailto:${site.email}`;
 
 /**

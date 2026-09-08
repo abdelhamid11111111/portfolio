@@ -27,7 +27,7 @@ export const en = {
   },
   hero: {
     availability: "Available for freelance work",
-    role: "Full Stack Developer",
+    role: "Freelance Web Developer",
     bio: "Your customers are already searching for what you offer. Make sure they find you instead of your competitors. I build fast, modern landing pages, web apps, and dashboards that help your business get noticed, build trust, and turn more visitors into paying customers.",
     cta: "Start Your Project",
   },
@@ -194,6 +194,10 @@ export const en = {
       timeline: "Timeline",
       type: "Type",
     },
+    /** Accessible name for the overview section. Never rendered visibly —
+        the section leads with the summary paragraph — so it has to say what
+        the section *is* rather than reuse a heading from the cards inside it. */
+    overviewTitle: "Project overview",
     challengeTitle: "The challenge",
     approachTitle: "What I built",
     outcomeTitle: "The outcome",
@@ -536,11 +540,11 @@ export const en = {
     landmark: "Page not found",
   },
   meta: {
-    title: "Abdelhamid Oug-Lhacen, Full Stack Developer",
+    title: "Abdelhamid Ouglhacen | Freelance Web Developer & Landing Pages",
     description:
-      "Full stack developer building landing pages, web applications and management dashboards with Next.js, TypeScript and Node.js.",
+      "High-converting, modern landing pages and custom websites, Fast, responsive, and tailored to grow your business.",
     ogDescription:
-      "Full stack developer building landing pages, web applications and management dashboards.",
+      "Web developer building landing pages, web applications and management dashboards",
   },
 };
 

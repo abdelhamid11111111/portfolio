@@ -9,7 +9,7 @@ import { MotionProvider } from "@/components/motion/MotionProvider";
 import { ThemeProvider } from "@/components/site/ThemeProvider";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
-import { whatsappHref } from "@/data/site";
+import { siteUrl, whatsappHref } from "@/data/site";
 import { isLocale, locales, localeTags, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 
@@ -65,11 +65,9 @@ export async function generateMetadata({
   return {
     // hreflang and canonical have to be absolute URLs for Google to honour
     // them, and `metadataBase` is what turns the relative paths below into
-    // absolute ones. Set NEXT_PUBLIC_SITE_URL in the deployment environment;
-    // the localhost fallback only ever applies in development.
-    metadataBase: new URL(
-      process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-    ),
+    // absolute ones. The origin itself lives in `src/data/site.ts`, so the
+    // pages, the sitemap and robots.txt cannot drift apart.
+    metadataBase: new URL(siteUrl),
     title: dict.meta.title,
     description: dict.meta.description,
     // hreflang, so Google serves the French page to French searchers instead of

@@ -73,13 +73,26 @@ export function Hero({
               <span className="block text-primary">
                 {site.name.split(" ").slice(1).join(" ")}
               </span>
-            </h1>
-          </Reveal>
+              {/* The role belongs inside the h1 rather than in a sibling <p>:
+                  on its own the heading names a person, and what the page is
+                  actually offering — the words someone types into a search bar
+                  — sat outside the only element that says what this page is
+                  about. Nesting it keeps the h1 single and unique while making
+                  the heading read "name, and here is what he does".
 
-          <Reveal delay={0.14}>
-            <p className="font-mono text-[clamp(0.75rem,1.5vh,1rem)] tracking-[0.12em] text-muted-foreground uppercase lg:tracking-[0.14em] lg:text-[clamp(0.85rem,1.7vh,1.15rem)]">
-              {dict.role}
-            </p>
+                  The styling is unchanged from the old paragraph, with two
+                  additions the move requires: `leading-normal` to escape the
+                  h1's `leading-[0.8]`, which is set for the display type above
+                  and would crush a wrapped role line, and `mt-*` to replace the
+                  flex `gap` that used to separate the two elements. */}
+              <Reveal
+                as="span"
+                delay={0.14}
+                className="mt-[clamp(0.5rem,1.5vh,1.5rem)] block font-mono text-[clamp(0.75rem,1.5vh,1rem)] leading-normal tracking-[0.12em] text-muted-foreground uppercase lg:mt-[clamp(0.55rem,2vh,1.75rem)] lg:tracking-[0.14em] lg:text-[clamp(0.85rem,1.7vh,1.15rem)]"
+              >
+                {dict.role}
+              </Reveal>
+            </h1>
           </Reveal>
 
           <Reveal delay={0.2}>

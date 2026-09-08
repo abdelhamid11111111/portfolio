@@ -26,7 +26,7 @@ export const fr: Dictionary = {
   },
   hero: {
     availability: "Disponible pour des missions freelance",
-    role: "Développeur Full Stack",
+    role: "Développeur Web Freelance",
     bio: "Vos clients cherchent déjà ce que vous proposez. Faites en sorte qu’ils vous trouvent, vous, et pas vos concurrents. Je crée des landing pages, des applications web et des tableaux de bord rapides et modernes qui font remarquer votre activité, inspirent confiance et transforment plus de visiteurs en clients.",
     cta: "Lancez votre projet",
   },
@@ -184,6 +184,7 @@ export const fr: Dictionary = {
       timeline: "Durée",
       type: "Type",
     },
+    overviewTitle: "Aperçu du projet",
     challengeTitle: "Le problème",
     approachTitle: "Ce que j’ai construit",
     outcomeTitle: "Le résultat",
@@ -525,10 +526,10 @@ export const fr: Dictionary = {
     landmark: "Page introuvable",
   },
   meta: {
-    title: "Abdelhamid Oug-Lhacen, Développeur Full Stack",
+    title: "Abdelhamid Ouglhacen | Développeur Web Freelance & Landing Pages",
     description:
-      "Développeur full stack : landing pages, applications web et tableaux de bord de gestion avec Next.js, TypeScript et Node.js.",
+      "Landing pages modernes et orientées conversion, et sites sur mesure. Rapides, responsives et pensés pour développer votre activité.",
     ogDescription:
-      "Développeur full stack : landing pages, applications web et tableaux de bord de gestion.",
+      "Développeur web : landing pages, applications web et tableaux de bord de gestion.",
   },
 };

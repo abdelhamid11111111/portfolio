@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { caseStudies, caseStudyBySlug } from "@/data/case-studies";
-import { site } from "@/data/site";
+import { site, siteUrl } from "@/data/site";
 import { isLocale, locales, localeTags } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { CaseStudy } from "@/sections/CaseStudy";
@@ -30,9 +30,7 @@ export async function generateMetadata({
   const copy = dict.caseStudies.items[study.id];
 
   return {
-    metadataBase: new URL(
-      process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-    ),
+    metadataBase: new URL(siteUrl),
     title: `${copy.title} — ${site.name}`,
     description: copy.tagline,
     alternates: {
