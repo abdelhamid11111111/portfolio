@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import "../globals.css";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -39,6 +40,15 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
 });
+
+/**
+ * Google Analytics 4 measurement ID. Public by design — it ships in the client
+ * bundle, which is how the gtag snippet works everywhere. Kept in the env so a
+ * preview or a fork can point at its own property (or at none: leave it unset
+ * and the tag simply is not rendered, so local development stays out of the
+ * production stats).
+ */
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 /** Both locales are prerendered at build time — neither page is dynamic. */
 export function generateStaticParams() {
@@ -150,6 +160,28 @@ export default async function RootLayout({
             <Toaster position="top-right" offset="84px" />
           </MotionProvider>
         </ThemeProvider>
+
+        {/* Analytics loads after hydration ("afterInteractive"), so the tag
+            never competes with the page's own JS for the first paint. GA4's
+            enhanced measurement listens to History API changes, which is what
+            records the client-side navigation between /en and /fr as a
+            pageview without any extra wiring here. */}
+        {gaId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}');
+              `}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );
