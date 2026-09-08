@@ -513,6 +513,17 @@ export const fr: Dictionary = {
     location: "Agadir, Maroc",
     builtWith: "Réalisé avec Next.js et Tailwind CSS.",
   },
+  notFound: {
+    eyebrow: "// erreur 404",
+    titleLead: "Cette page a pris",
+    titleAccent: "un mauvais virage",
+    intro:
+      "Le lien est cassé, ou la page a changé d’adresse depuis son partage. Rien n’est perdu : l’essentiel est à un clic.",
+    home: "Retour à l’accueil",
+    contact: "Démarrer un projet",
+    linksLabel: "Ou rendez-vous directement à",
+    landmark: "Page introuvable",
+  },
   meta: {
     title: "Abdelhamid Oug-Lhacen, Développeur Full Stack",
     description:

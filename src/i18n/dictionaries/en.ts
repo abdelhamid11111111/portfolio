@@ -521,6 +521,20 @@ export const en = {
     location: "Agadir, Morocco",
     builtWith: "Built with Next.js and Tailwind CSS.",
   },
+  notFound: {
+    eyebrow: "// error 404",
+    /** Split lead/accent for the same reason as every section title: which
+        words carry the accent colour is a translator's call, not the layout's. */
+    titleLead: "This page took a",
+    titleAccent: "wrong turn",
+    intro:
+      "The link is broken, or the page has moved since it was last shared. Nothing is lost — everything worth seeing is one click away.",
+    home: "Back to home",
+    contact: "Start a project",
+    linksLabel: "Or go straight to",
+    /** aria-label on the 404 region. */
+    landmark: "Page not found",
+  },
   meta: {
     title: "Abdelhamid Oug-Lhacen, Full Stack Developer",
     description:
