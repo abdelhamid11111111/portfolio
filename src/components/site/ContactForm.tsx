@@ -82,7 +82,11 @@ async function submitMessage(values: Record<Field, string>): Promise<void> {
     TEMPLATE_ID,
     {
       name: values.name.trim(),
+      // Sent under both names on purpose: {{email}} is what the template body
+      // prints, while `reply_to` is the name EmailJS's own Reply-To header
+      // still expects on older templates.
       email: values.email.trim(),
+      reply_to: values.email.trim(),
       message: values.message.trim(),
       title: `New message from ${values.name.trim()}`,
       time: new Date().toLocaleString(),

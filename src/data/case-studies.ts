@@ -75,7 +75,7 @@ export const caseStudies: readonly CaseStudy[] = [
     blocks: [
       {
         id: "my-challenges",
-        image: "/projects/mychallenges.png",
+        image: "/projects/workout-community/userDash.png",
         ratio: 2400 / 1792,
         wide: true,
       },
